@@ -12,6 +12,8 @@
 # Commandline arguments for webui.py, for example: export COMMANDLINE_ARGS="--medvram --opt-split-attention"
 export COMMANDLINE_ARGS="--listen --xformers --enable-insecure-extension-access"
 
+export XFORMERS_PACKAGE="xformers==0.0.26`.post1"
+
 # python3 executable
 #python_cmd="python3"
 
@@ -25,7 +27,7 @@ export COMMANDLINE_ARGS="--listen --xformers --enable-insecure-extension-access"
 # export LAUNCH_SCRIPT="launch-user.py"
 
 # install command for torch
-#export TORCH_COMMAND="pip install torch==1.12.1+cu113 --extra-index-url https://download.pytorch.org/whl/cu113"
+export TORCH_COMMAND="pip install torch==2.3.0 torchvision==0.18.0 --extra-index-url https://download.pytorch.org/whl/cu121"
 
 # Requirements file to use for stable-diffusion-webui
 #export REQS_FILE="requirements_versions.txt"
