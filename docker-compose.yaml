@@ -4,7 +4,7 @@ services:
     ports:
       - "${WEBUI_PORT:-27860}:7860"
     volumes:
-      - ./data/models:/stable-diffusion-webui/models
+      - models:/stable-diffusion-webui/models
       - ./data/outputs:/stable-diffusion-webui/outputs
     stop_signal: SIGKILL
     tty: true
@@ -15,3 +15,5 @@ services:
               - driver: nvidia
                 device_ids: ['0']
                 capabilities: [compute, utility]
+volumes:
+  models:
