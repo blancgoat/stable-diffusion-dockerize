@@ -1,19 +1,23 @@
 services:
-  webui-docker:
-    build: /docker
+  stable-diffusion-webui:
+    build:
+      context: /docker
+      args:
+          - PYTORCH_IMAGE_TAG
+          - XFORMERS_TAG
+          - WEBUI_VERSION
+          - MIRROR_URL
     ports:
-      - "${WEBUI_PORT:-27860}:7860"
+      - "${HTTP_PORT:-7860}:7860"
     volumes:
       - models:/stable-diffusion-webui/models
       - ./data/outputs:/stable-diffusion-webui/outputs
-    stop_signal: SIGKILL
-    tty: true
     deploy:
       resources:
         reservations:
           devices:
               - driver: nvidia
-                device_ids: ['0']
+                count: all
                 capabilities: [compute, utility]
 volumes:
   models:
